@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator-header">
+            Scientific Calculator
+        </div>
+        <div class="calculator-content">
+            <div class="calculator">
+                <!-- Display Section -->
+                <div class="display-container">
+                    <div class="display-labels">
+                        <button class="mode-btn" id="deg-rad-btn">DEG</button>
+                        <button class="mode-btn" id="fe-btn">F-E</button>
+                    </div>
+                    <div class="display" id="display">0</div>
+                </div>
+                
+                <!-- Memory Buttons Row -->
+                <div class="buttons-grid">
+                    <button class="memory-btn" data-action="mc">MC</button>
+                    <button class="memory-btn" data-action="mr">MR</button>
+                    <button class="memory-btn" data-action="m-plus">M+</button>
+                    <button class="memory-btn" data-action="m-minus">M-</button>
+                    <button class="memory-btn" data-action="ms">MS</button>
+                </div>
+                
+                <!-- Labels Row -->
+                <div class="labels-row">
+                    <span>Trigonometry</span>
+                    <span>Function</span>
+                </div>
+                
+                <!-- Main Button Grid -->
+                <div class="buttons-grid">
+                    <!-- Row 1: 2nd, π, special grid (3x2), clear -->
+                    <button class="scientific-btn" id="second-btn">2nd</button>
+                    <button class="scientific-btn" data-action="pi">π</button>
+                    <div class="special-grid">
+                        <button class="scientific-btn primary-function" data-action="abs">|x|</button>
+                        <button class="scientific-btn primary-function" data-action="floor">floor</button>
+                        <button class="scientific-btn primary-function" data-action="ceil">ceil</button>
+                        <button class="scientific-btn secondary-function" data-action="sin">sin</button>
+                        <button class="scientific-btn secondary-function" data-action="cos">cos</button>
+                        <button class="scientific-btn secondary-function" data-action="tan">tan</button>
+                        <button class="scientific-btn primary-function" data-action="rand">rand</button>
+                        <button class="scientific-btn primary-function" data-action="dms">dms</button>
+                        <button class="scientific-btn primary-function" data-action="deg">deg</button>
+                        <button class="scientific-btn secondary-function" data-action="asin">asin</button>
+                        <button class="scientific-btn secondary-function" data-action="acos">acos</button>
+                        <button class="scientific-btn secondary-function" data-action="atan">atan</button>
+                    </div>
+                    <button class="operator" data-action="clear">clear</button>
+                    
+                    <!-- Row 2: x², 1/x, |x|, exp, % -->
+                    <button class="scientific-btn primary-function" data-action="square">x²</button>
+                    <button class="scientific-btn secondary-function" data-action="cube">x³</button>
+                    <button class="scientific-btn primary-function" data-action="reciprocal">1/x</button>
+                    <button class="scientific-btn secondary-function" data-action="cube-root">∛x</button>
+                    <button class="scientific-btn primary-function" data-action="abs">|x|</button>
+                    <button class="scientific-btn secondary-function" data-action="log2">log₂</button>
+                    <button class="scientific-btn primary-function" data-action="exp">exp</button>
+                    <button class="scientific-btn secondary-function" data-action="e-power">e^x</button>
+                    <button class="scientific-btn primary-function" data-action="percent">%</button>
+                    <button class="scientific-btn secondary-function" data-action="mod">mod</button>
+                    
+                    <!-- Row 3: ²√x, (, ), n!, / -->
+                    <button class="scientific-btn primary-function" data-action="sqrt">²√x</button>
+                    <button class="scientific-btn secondary-function" data-action="y-root">ʸ√x</button>
+                    <button class="operator" data-action="open-paren">(</button>
+                    <button class="operator" data-action="close-paren">)</button>
+                    <button class="scientific-btn primary-function" data-action="factorial">n!</button>
+                    <button class="scientific-btn secondary-function" data-action="power10">10^x</button>
+                    <button class="operator" data-action="divide">/</button>
+                    
+                    <!-- Row 4: xⁿ, 7, 8, 9, * -->
+                    <button class="scientific-btn primary-function" data-action="power">xⁿ</button>
+                    <button class="scientific-btn secondary-function" data-action="power-e">eⁿ</button>
+                    <button class="numeric" data-number="7">7</button>
+                    <button class="numeric" data-number="8">8</button>
+                    <button class="numeric" data-number="9">9</button>
+                    <button class="operator" data-action="multiply">*</button>
+                    
+                    <!-- Row 5: 10^, 4, 5, 6, - -->
+                    <button class="scientific-btn primary-function" data-action="power10">10^</button>
+                    <button class="scientific-btn secondary-function" data-action="log">log</button>
+                    <button class="numeric" data-number="4">4</button>
+                    <button class="numeric" data-number="5">5</button>
+                    <button class="numeric" data-number="6">6</button>
+                    <button class="operator" data-action="subtract">-</button>
+                    
+                    <!-- Row 6: log, 1, 2, 3, + -->
+                    <button class="scientific-btn primary-function" data-action="log">log</button>
+                    <button class="scientific-btn secondary-function" data-action="ln">ln</button>
+                    <button class="numeric" data-number="1">1</button>
+                    <button class="numeric" data-number="2">2</button>
+                    <button class="numeric" data-number="3">3</button>
+                    <button class="operator" data-action="add">+</button>
+                    
+                    <!-- Row 7: ln, +/-, 0, ., = -->
+                    <button class="scientific-btn primary-function" data-action="ln">ln</button>
+                    <button class="scientific-btn secondary-function" data-action="log10">log₁₀</button>
+                    <button class="operator" data-action="plus-minus">+/-</button>
+                    <button class="numeric" data-number="0">0</button>
+                    <button class="operator" data-action="decimal">.</button>
+                    <button class="equals" data-action="equals">=</button>
+                </div>
+            </div>
+            
+            <!-- History Panel -->
+            <div class="history-panel">
+                <div class="history-header">
+                    <div class="history-title">Calculation History</div>
+                    <button class="clear-history" id="clear-history">Clear</button>
+                </div>
+                <div class="history-list" id="history-list">
+                    <div class="empty-history">No calculations yet</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Calculator state
+        const calculator = {
+            displayValue: '0',
+            firstOperand: null,
+            waitingForSecondOperand: false,
+            operator: null,
+            memory: 0,
+            isSecondMode: false,
+            isDegMode: true,
+            isFEMode: false,
+            history: [],
+            currentExpression: ''
+        };
+
+        // DOM Elements
+        const display = document.getElementById('display');
+        const historyList = document.getElementById('history-list');
+        const secondBtn = document.getElementById('second-btn');
+        const degRadBtn = document.getElementById('deg-rad-btn');
+        const feBtn = document.getElementById('fe-btn');
+        const clearHistoryBtn = document.getElementById('clear-history');
+
+        // Update display
+        function updateDisplay() {
+            let value = calculator.displayValue;
+            
+            // Handle F-E mode (fixed/engineering)
+            if (calculator.isFEMode && value !== 'Error') {
+                const num = parseFloat(value);
+                if (!isNaN(num)) {
+                    if (Math.abs(num) >= 1e6 || (Math.abs(num) < 1e-3 && num !== 0)) {
+                        value = num.toExponential(6);
+                    } else {
+                        value = parseFloat(num.toFixed(6)).toString();
+                    }
+                }
+            }
+            
+            display.textContent = value;
+        }
+
+        // Add to history
+        function addToHistory(expression, result) {
+            calculator.history.unshift({ expression, result });
+            
+            // Update history display
+            historyList.innerHTML = '';
+            
+            if (calculator.history.length === 0) {
+                historyList.innerHTML = '<div class="empty-history">No calculations yet</div>';
+                return;
+            }
+            
+            calculator.history.forEach(item => {
+                const historyItem = document.createElement('div');
+                historyItem.className = 'history-item';
+                historyItem.innerHTML = `
+                    <div class="history-expression">${item.expression}</div>
+                    <div class="history-result">= ${item.result}</div>
+                `;
+                historyItem.addEventListener('click', () => {
+                    calculator.displayValue = item.result;
+                    updateDisplay();
+                });
+                historyList.appendChild(historyItem);
+            });
+        }
+
+        // Input digit
+        function inputDigit(digit) {
+            const { displayValue, waitingForSecondOperand } = calculator;
+            
+            if (waitingForSecondOperand) {
+                calculator.displayValue = digit;
+                calculator.waitingForSecondOperand = false;
+            } else {
+                calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
+            }
+            
+            updateDisplay();
+        }
+
+        // Input decimal
+        function inputDecimal() {
+            if (calculator.waitingForSecondOperand) {
+                calculator.displayValue = '0.';
+                calculator.waitingForSecondOperand = false;
+                return;
+            }
+            
+            if (!calculator.displayValue.includes('.')) {
+                calculator.displayValue += '.';
+            }
+            
+            updateDisplay();
+        }
+
+        // Handle operator
+        // Handle operator
+function handleOperator(nextOperator) {
+    const { firstOperand, displayValue, operator } = calculator;
+    const inputValue = parseFloat(displayValue);
+
+    // Map button actions to real operators
+    const operatorMap = {
+        add: '+',
+        subtract: '-',
+        multiply: '*',
+        divide: '/',
+        equals: '='
+    };
+    const op = operatorMap[nextOperator] || nextOperator;
+
+    if (operator && calculator.waitingForSecondOperand) {
+        calculator.operator = op;
+        return;
+    }
+
+    if (firstOperand === null && !isNaN(inputValue)) {
+        calculator.firstOperand = inputValue;
+    } else if (operator) {
+        const result = performCalculation[operator](firstOperand, inputValue);
+
+        calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
+        calculator.firstOperand = result;
+
+        // Add to history
+        addToHistory(
+            calculator.currentExpression + inputValue + ' ' + op,
+            calculator.displayValue
+        );
+        calculator.currentExpression = calculator.displayValue + ' ' + op + ' ';
+    }
+
+    calculator.waitingForSecondOperand = true;
+    calculator.operator = op;
+    updateDisplay();
+}
+
+        // Perform calculation
+        const performCalculation = {
+            '/': (firstOperand, secondOperand) => {
+                if (secondOperand === 0) {
+                    return 'Error';
+                }
+                return firstOperand / secondOperand;
+            },
+            '*': (firstOperand, secondOperand) => firstOperand * secondOperand,
+            '+': (firstOperand, secondOperand) => firstOperand + secondOperand,
+            '-': (firstOperand, secondOperand) => firstOperand - secondOperand,
+            '=': (firstOperand, secondOperand) => secondOperand
+        };
+
+        // Reset calculator
+        function resetCalculator() {
+            calculator.displayValue = '0';
+            calculator.firstOperand = null;
+            calculator.waitingForSecondOperand = false;
+            calculator.operator = null;
+            calculator.currentExpression = '';
+            updateDisplay();
+        }
+
+        // Handle scientific functions
+        function handleScientificFunction(func) {
+            const value = parseFloat(calculator.displayValue);
+            
+            if (isNaN(value) && func !== 'rand' && func !== 'pi') {
+                calculator.displayValue = 'Error';
+                updateDisplay();
+                return;
+            }
+            
+            let result;
+            
+            switch (func) {
+                case 'square':
+                    result = value * value;
+                    addToHistory(`sqr(${value})`, result);
+                    break;
+                case 'cube':
+                    result = value * value * value;
+                    addToHistory(`cube(${value})`, result);
+                    break;
+                case 'sqrt':
+                    if (value < 0) {
+                        result = 'Error';
+                    } else {
+                        result = Math.sqrt(value);
+                    }
+                    addToHistory(`√(${value})`, result);
+                    break;
+                case 'cube-root':
+                    result = Math.cbrt(value);
+                    addToHistory(`∛(${value})`, result);
+                    break;
+                case 'reciprocal':
+                    if (value === 0) {
+                        result = 'Error';
+                    } else {
+                        result = 1 / value;
+                    }
+                    addToHistory(`1/(${value})`, result);
+                    break;
+                case 'factorial':
+                    if (value < 0 || !Number.isInteger(value)) {
+                        result = 'Error';
+                    } else {
+                        result = 1;
+                        for (let i = 2; i <= value; i++) {
+                            result *= i;
+                        }
+                    }
+                    addToHistory(`(${value}!)`, result);
+                    break;
+                case 'power':
+                    // This will be handled when the second operand is entered
+                    calculator.operator = 'power';
+                    calculator.firstOperand = value;
+                    calculator.waitingForSecondOperand = true;
+                    calculator.currentExpression = `${value}^`;
+                    updateDisplay();
+                    return;
+                case 'power10':
+                    result = Math.pow(10, value);
+                    addToHistory(`10^(${value})`, result);
+                    break;
+                case 'exp':
+                    result = Math.exp(value);
+                    addToHistory(`exp(${value})`, result);
+                    break;
+                case 'log':
+                    if (value <= 0) {
+                        result = 'Error';
+                    } else {
+                        result = Math.log10(value);
+                    }
+                    addToHistory(`log(${value})`, result);
+                    break;
+                case 'ln':
+                    if (value <= 0) {
+                        result = 'Error';
+                    } else {
+                        result = Math.log(value);
+                    }
+                    addToHistory(`ln(${value})`, result);
+                    break;
+                case 'abs':
+                    result = Math.abs(value);
+                    addToHistory(`abs(${value})`, result);
+                    break;
+                case 'floor':
+                    result = Math.floor(value);
+                    addToHistory(`floor(${value})`, result);
+                    break;
+                case 'ceil':
+                    result = Math.ceil(value);
+                    addToHistory(`ceil(${value})`, result);
+                    break;
+                case 'rand':
+                    result = Math.random();
+                    addToHistory(`rand()`, result);
+                    break;
+                case 'pi':
+                    result = Math.PI;
+                    addToHistory(`π`, result);
+                    break;
+                case 'percent':
+                    result = value / 100;
+                    addToHistory(`(${value})%`, result);
+                    break;
+                case 'plus-minus':
+                    result = -value;
+                    calculator.displayValue = result.toString();
+                    updateDisplay();
+                    return;
+                case 'sin':
+                    result = calculator.isDegMode ? 
+                             Math.sin(value * Math.PI / 180) : 
+                             Math.sin(value);
+                    addToHistory(`sin(${value}${calculator.isDegMode ? '°' : ''})`, result);
+                    break;
+                case 'cos':
+                    result = calculator.isDegMode ? 
+                             Math.cos(value * Math.PI / 180) : 
+                             Math.cos(value);
+                    addToHistory(`cos(${value}${calculator.isDegMode ? '°' : ''})`, result);
+                    break;
+                case 'tan':
+                    result = calculator.isDegMode ? 
+                             Math.tan(value * Math.PI / 180) : 
+                             Math.tan(value);
+                    addToHistory(`tan(${value}${calculator.isDegMode ? '°' : ''})`, result);
+                    break;
+                default:
+                    return;
+            }
+            
+            calculator.displayValue = result.toString();
+            updateDisplay();
+        }
+
+        // Handle memory functions
+        function handleMemoryFunction(func) {
+            const value = parseFloat(calculator.displayValue);
+            
+            switch (func) {
+                case 'mc':
+                    calculator.memory = 0;
+                    break;
+                case 'mr':
+                    calculator.displayValue = calculator.memory.toString();
+                    updateDisplay();
+                    break;
+                case 'm-plus':
+                    calculator.memory += value;
+                    break;
+                case 'm-minus':
+                    calculator.memory -= value;
+                    break;
+                case 'ms':
+                    calculator.memory = value;
+                    break;
+            }
+        }
+
+        // Toggle second mode
+        function toggleSecondMode() {
+            calculator.isSecondMode = !calculator.isSecondMode;
+            secondBtn.classList.toggle('active');
+            document.querySelector('.buttons-grid').classList.toggle('secondary-mode');
+        }
+
+        // Toggle DEG/RAD mode
+        function toggleDegRadMode() {
+            calculator.isDegMode = !calculator.isDegMode;
+            degRadBtn.textContent = calculator.isDegMode ? 'DEG' : 'RAD';
+            degRadBtn.classList.toggle('active');
+        }
+
+        // Toggle F-E mode
+        function toggleFEMode() {
+            calculator.isFEMode = !calculator.isFEMode;
+            feBtn.classList.toggle('active');
+            updateDisplay();
+        }
+
+        // Add button click effect
+        function addButtonClickEffect(button) {
+            button.style.transform = 'translateY(0)';
+            button.style.boxShadow = '0 1px 2px rgba(0, 0, 0, 0.1)';
+            
+            setTimeout(() => {
+                button.style.transform = '';
+                button.style.boxShadow = '';
+            }, 150);
+        }
+
+        // Add event listeners
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', () => {
+                addButtonClickEffect(button);
+                
+                if (button.dataset.number) {
+                    inputDigit(button.dataset.number);
+                } else if (button.dataset.action) {
+                    const action = button.dataset.action;
+                    
+                    if (action === 'decimal') {
+                        inputDecimal();
+                    } else if (action === 'clear') {
+                        resetCalculator();
+                    } else if (['add', 'subtract', 'multiply', 'divide', 'equals'].includes(action)) {
+                        handleOperator(action);
+                    } else if (['mc', 'mr', 'm-plus', 'm-minus', 'ms'].includes(action)) {
+                        handleMemoryFunction(action);
+                    } else if (action === 'second') {
+                        toggleSecondMode();
+                    } else {
+                        handleScientificFunction(action);
+                    }
+                }
+            });
+        });
+
+        // Special handlers for mode buttons
+        secondBtn.addEventListener('click', toggleSecondMode);
+        degRadBtn.addEventListener('click', toggleDegRadMode);
+        feBtn.addEventListener('click', toggleFEMode);
+        clearHistoryBtn.addEventListener('click', () => {
+            calculator.history = [];
+            historyList.innerHTML = '<div class="empty-history">No calculations yet</div>';
+        });
+
+        // Keyboard support
+        document.addEventListener('keydown', event => {
+            const key = event.key;
+            
+            if (/[0-9]/.test(key)) {
+                inputDigit(key);
+                const button = document.querySelector(`button[data-number="${key}"]`);
+                if (button) addButtonClickEffect(button);
+            } else if (key === '.') {
+                inputDecimal();
+                const button = document.querySelector('button[data-action="decimal"]');
+                if (button) addButtonClickEffect(button);
+            } else if (['+', '-', '*', '/'].includes(key)) {
+                handleOperator(key === '*' ? 'multiply' : key === '/' ? 'divide' : key);
+                const button = document.querySelector(`button[data-action="${key === '*' ? 'multiply' : key === '/' ? 'divide' : key}"]`);
+                if (button) addButtonClickEffect(button);
+            } else if (key === 'Enter' || key === '=') {
+                handleOperator('equals');
+                const button = document.querySelector('button[data-action="equals"]');
+                if (button) addButtonClickEffect(button);
+            } else if (key === 'Escape' || key === 'c' || key === 'C') {
+                resetCalculator();
+                const button = document.querySelector('button[data-action="clear"]');
+                if (button) addButtonClickEffect(button);
+            } else if (key === 'Backspace') {
+                calculator.displayValue = calculator.displayValue.slice(0, -1) || '0';
+                updateDisplay();
+            }
+        });
+
+        // Initialize display
+        updateDisplay();
+    </script>
+</body>
+</html>
