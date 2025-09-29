@@ -39,8 +39,6 @@
             display: flex;
             flex-wrap: wrap;
         }
-
-        /* Calculator main section */
         .calculator {
             flex: 1;
             min-width: 400px;
@@ -57,30 +55,37 @@
             margin-bottom: 15px;
         }
 
+        .expression-display {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: right;
+            min-height: 20px;
+            margin-bottom: 2px;
+            overflow: hidden;
+            word-break: break-all;
+        }
         .display-labels {
             display: flex;
-            justify-content: space-between;
             margin-bottom: 10px;
-            font-size: 12px;
+            gap: 8px;
             color: #666;
         }
-
         .mode-btn {
             background: none;
             border: 1px solid #ddd;
             border-radius: 4px;
-            padding: 2px 8px;
+            padding: 0px 8px;
+            height: 2px;
             font-size: 11px;
             cursor: pointer;
+            margin-bottom: 8px;
             transition: all 0.2s;
         }
-
         .mode-btn.active {
             background-color: #4dabf5;
             color: white;
             border-color: #4dabf5;
         }
-
         .display {
             font-size: 2.5rem;
             font-weight: bold;
@@ -93,24 +98,17 @@
             overflow: hidden;
             word-break: break-all;
         }
-
-        /* Button grid */
         .buttons-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 8px;
+            gap: 6px;
         }
-
-        /* Special grid for the 3x2 section */
         .special-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(3, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             grid-column: span 2;
-            gap: 8px;
+            gap: 4px;
         }
-
-        /* Button styles */
         button {
             border: none;
             background-color: #f8f9fa;
@@ -123,34 +121,28 @@
             border-radius: 6px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
         button:hover {
             background-color: #e9ecef;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
-
         button:active {
             background-color: #dee2e6;
             transform: translateY(0);
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
-
         .numeric {
             font-weight: bold;
             background-color: #ffffff;
         }
-
         .operator {
             background-color: #e3f2fd;
         }
-
         .equals {
             background-color: #4dabf5;
             color: white;
             grid-row: span 2;
         }
-
         .equals:hover {
             background-color: #339af0;
         }
@@ -171,6 +163,24 @@
             display: none;
         }
 
+        .trig-container {
+            display: none;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin: 10px 0;
+            grid-column: span 2;
+        }
+
+        .trig-container.show {
+            display: grid;
+        }
+
+        .trig-container .scientific-btn {
+            min-height: 48px;
+            padding: 10px 8px;
+            font-size: 0.95rem;
+        }
+
         .secondary-mode .secondary-function {
             display: block;
         }
@@ -179,18 +189,57 @@
             display: none;
         }
 
+
         /* Labels row */
         .labels-row {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* justify-content: space-between; */
             padding: 8px 15px;
-            background-color: #f9f9f9;
-            border: 1px solid #e0e0e0;
+            gap: 10px;
+            /* background-color: #f9f9f9; */
+            /* border: 1px solid #e0e0e0; */
             border-radius: 6px;
             margin: 10px 0;
             font-size: 14px;
             color: #666;
         }
+
+        .memory-popup {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: -300px;
+            background: #f1f1f1;
+            border-top: 2px solid #ccc;
+            max-height: 300px;
+            overflow-y: auto;
+            transition: bottom 0.3s ease-in-out;
+            z-index: 999;
+            padding: 10px;
+        }
+
+        .memory-popup.show {
+            bottom: 0;
+        }
+
+        .memory-popup-header {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .memory-item {
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+        .empty-memory {
+            color: #777;
+            text-align: center;
+            padding: 20px;
+        }
+
 
         /* History panel */
         .history-panel {
@@ -270,22 +319,22 @@
             .calculator-content {
                 flex-direction: column;
             }
-            
+
             .history-panel {
                 border-left: none;
                 border-top: 1px solid #e0e0e0;
             }
-            
+
             .calculator {
                 min-width: 100%;
             }
-            
+
             button {
                 padding: 12px 5px;
                 font-size: 0.9rem;
                 min-height: 55px;
             }
-            
+
             .display {
                 font-size: 2.2rem;
             }
@@ -295,28 +344,28 @@
             .calculator {
                 padding: 10px;
             }
-            
+
             button {
                 padding: 10px 5px;
                 font-size: 0.85rem;
                 min-height: 50px;
             }
-            
+
             .display {
                 font-size: 2rem;
                 min-height: 50px;
             }
-            
-            .display-labels, .labels-row {
+
+            .display-labels,
+            .labels-row {
                 font-size: 11px;
             }
-            
+
             .buttons-grid {
                 gap: 5px;
             }
-            
+
             .special-grid {
                 gap: 5px;
             }
         }
-    
