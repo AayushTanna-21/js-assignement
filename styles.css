@@ -11,7 +11,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            /* background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); */
             padding: 20px;
         }
 
@@ -39,6 +39,7 @@
             display: flex;
             flex-wrap: wrap;
         }
+
         .calculator {
             flex: 1;
             min-width: 400px;
@@ -64,12 +65,14 @@
             overflow: hidden;
             word-break: break-all;
         }
+
         .display-labels {
             display: flex;
             margin-bottom: 10px;
             gap: 8px;
             color: #666;
         }
+
         .mode-btn {
             background: none;
             border: 1px solid #ddd;
@@ -81,11 +84,13 @@
             margin-bottom: 8px;
             transition: all 0.2s;
         }
+
         .mode-btn.active {
             background-color: #4dabf5;
             color: white;
             border-color: #4dabf5;
         }
+
         .display {
             font-size: 2.5rem;
             font-weight: bold;
@@ -98,17 +103,20 @@
             overflow: hidden;
             word-break: break-all;
         }
+
         .buttons-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 6px;
         }
+
         .special-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-column: span 2;
             gap: 4px;
         }
+
         button {
             border: none;
             background-color: #f8f9fa;
@@ -121,28 +129,34 @@
             border-radius: 6px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         button:hover {
             background-color: #e9ecef;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
+
         button:active {
             background-color: #dee2e6;
             transform: translateY(0);
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
+
         .numeric {
             font-weight: bold;
             background-color: #ffffff;
         }
+
         .operator {
             background-color: #e3f2fd;
         }
+
         .equals {
             background-color: #4dabf5;
             color: white;
             grid-row: span 2;
         }
+
         .equals:hover {
             background-color: #339af0;
         }
@@ -189,6 +203,12 @@
             display: none;
         }
 
+        /* Style for 2nd button active state */
+        #second-btn.active {
+            background-color: #4dabf5;
+            color: white;
+            border-color: #4dabf5;
+        }
 
         /* Labels row */
         .labels-row {
